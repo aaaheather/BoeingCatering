@@ -6,36 +6,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet" type="text/css">
-  
-    <script>
-      function sendEmail(event) {
-        event.preventDefault();
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const bdate = document.getElementById("bdate").value;
-        const type = document.getElementById("type").value;
-        const machineId = document.getElementById("machineId").value;
-        const clean = document.getElementById("clean").value;
-        const issues = document.getElementById("issues").value;
-        const satisfied = document.getElementById("satisfied").value;
-        const comments = document.getElementById("comments").value;
-    
-        const mailtoLink = "mailto:heather.a.anderson@boeing.com;geoffrey.b.moylan@boeing.com;Wendy.M.Maynard@boeing.com;Walsh-Gene@aramark.com;" + document.getElementById('email').value +
-          "?subject=Boeing%20Vending%20Feedback%20Survey" +
-          "&body=Name: " + name +
-          "%0AEmail: " + email +
-          "%0ADate: " + bdate +
-          "%0AVending or MicroMarket: " + type +
-          "%0AMachine ID: " + machineId +
-          "%0AClean and stocked: " + clean +
-          "%0APayment or product issues: " + issues +
-          "%0ASatisfied: " + satisfied +
-          "%0AComments: " + comments;
-    
-        window.location.href = mailtoLink;
-        alert("Thank you for submitting feedback! Please continue to send the email and check for a confimation in your inbox!");
-      }
-    </script>
   </head>
   <body>
     <div class="testbox">
@@ -50,23 +20,24 @@
         </div>
         <div class="item">
           <label for="email">Email<span></span></label>
-          <input id="email" type="text" name="email"/>
+          <input id="email" type="email" name="email"/>
         </div>
         <div class="item">
           <label for="bdate">Date<span>*</span></label>
           <input id="bdate" type="date" name="bdate" required/>
           <i class="fas fa-calendar-alt"></i>
+        </div>
         <div class="item">
           <label for="machineId">Location<span>*</span></label>
-          <input id="machineId" type="text" name="name" required/>
+          <input id="machineId" type="text" name="machineId" required/>
         </div>
         <div class="item">
           <label for="catering">Aramark or Compass Catering? <span> </span></label>
           <br>
-          <select id="catering">
+          <select id="catering" name="catering">
             <option value="">--Select--</option>
-            <option value="1">Aramark</option>
-            <option value="2">Compass</option>
+            <option value="Aramark">Aramark</option>
+            <option value="Compass">Compass</option>
           </select>
         </div>
         <br/>
@@ -74,7 +45,7 @@
         <div class="item">
           <label for="clean">How was the quality of your service? <span> </span></label>
           <br>
-          <select id="clean">
+          <select id="clean" name="clean">
             <option value="">--Select--</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -83,10 +54,10 @@
             <option value="5">5</option>
           </select>
         </div>
-        <div class="item">
+        <div class "item">
           <label for="issues">Was the amount of food sufficient for the event's requirements?<span> </span></label>
           <br>
-          <select id="issues">
+          <select id="issues" name="issues">
             <option value="">--Select--</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -98,7 +69,7 @@
         <div class="item">
           <label for="satisfied">How satisfied were you with the presentation of the food?<span> </span></label>
           <br>
-          <select id="satisfied">
+          <select id="satisfied" name="satisfied">
             <option value="">--Select--</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -109,13 +80,41 @@
         </div>
         <div class="item">
           <label for="comments">Comments<span></span></label>
-          <input id="comments" type="textbox" name="name"/>
+          <input id="comments" type="text" name="comments"/>
         </div>
-          <div class="btn-block">
-            <button type="submit" >EMAIL FEEDBACK</button>
-          </div>
-      </div>
+        <div class="btn-block">
+          <button type="submit">EMAIL FEEDBACK</button>
+        </div>
       </form>
     </div>
+    <script>
+      function sendEmail(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const bdate = document.getElementById("bdate").value;
+        const type = document.getElementById("catering").value;
+        const machineId = document.getElementById("machineId").value;
+        const clean = document.getElementById("clean").value;
+        const issues = document.getElementById("issues").value;
+        const satisfied = document.getElementById("satisfied").value;
+        const comments = document.getElementById("comments").value;
+
+        const mailtoLink = "mailto:heather.a.anderson@boeing.com;geoffrey.b.moylan@boeing.com;Wendy.M.Maynard@boeing.com;Walsh-Gene@aramark.com;" + email +
+          "?subject=Boeing%20Catering%20Feedback%20Survey" +
+          "&body=Name: " + name +
+          "%0AEmail: " + email +
+          "%0ADate: " + bdate +
+          "%0ALocation: " + machineId +
+          "%0ACatering: " + type +
+          "%0AQuality of Service: " + clean +
+          "%0AFood Sufficiency: " + issues +
+          "%0APresentation Satisfaction: " + satisfied +
+          "%0AComments: " + comments;
+
+        window.location.href = mailtoLink;
+        alert("Thank you for submitting feedback! Please continue to send the email and check for a confirmation in your inbox!");
+      }
+    </script>
   </body>
 </html>
